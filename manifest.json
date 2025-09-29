@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Sales AI Assistant",
+  "version": "1.5.0",
+  "description": "Scrapes LinkedIn profiles and shows an AI overlay with enrichment.",
+  "permissions": [
+  "storage",
+  "scripting",
+  "tabs"
+],
+  "host_permissions": [
+    "*://*.linkedin.com/*",
+    "*://*.salesnavigator.linkedin.com/*",
+    "https://news.google.com/*",
+    "https://www.google.com/*",
+     "https://raw.githubusercontent.com/*",
+     "https://*.supabase.co/*"
+     
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Sales AI Assistant"
+  },
+  "content_scripts": [
+  {
+    "matches": [
+      "*://*.linkedin.com/*",
+      "*://*.salesnavigator.linkedin.com/*"
+    ],
+    "js": ["content.js", "chatbot.js"],
+    "run_at": "document_idle"
+  }
+]
+}
